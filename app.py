@@ -51,7 +51,7 @@ add_bg_img('bg_cover.jpg')
 
 # add a title and a header
 st.markdown("<h1 style='text-align: center; color: black;'>Kidney Stone Prediction</h1>", unsafe_allow_html=True)
-st.markdown("The six physical characteristics of urine _specific gravity_ (the density of the urine relative to water), _pH value_ (negative logarithm of the hydrogen ion), _osmolarity_ (proportional to the concentration of molecules in solution), _conductivity_ (proportional to the concentration of charged ions in solution), _urea_ and _calcium  concentration_ alongside few secondary characteristics have been provided below.")
+st.markdown("<p style='text-align: justify; color: black;'>The six physical characteristics of urine, <i>specific gravity</i> (the density of the urine relative to water), <i>pH value</i> (negative logarithm of the hydrogen ion), <i>osmolarity</i> (proportional to the concentration of molecules in solution), <i>conductivity</i> (proportional to the concentration of charged ions in solution), <i>urea</i> and <i>calcium  concentration</i> alongside few secondary characteristics have been provided below.</p>", unsafe_allow_html=True)
 st.markdown("<h5 style='text-align: center; color: black;'>Please drag the slider to enter the values and click on 'Predict' button</h5>", unsafe_allow_html=True)
 
 # st.markdown("Please drag the slider of these features to enter the corresponding value and finally click on **:blue[Predict]** button for displaying the result.")
@@ -77,9 +77,12 @@ calc_bin = st.slider("calc_bin value", min_value=float(data.calc_bin.min()), max
 if st.button("Predict"):
     prediction = predict_target(gravity, ph, osmo, cond, urea, calc, osmo_cond_ratio, urea_calc_diff, osmo_urea_interaction, gravity_bin, ph_bin, osmo_bin, cond_bin, urea_bin, calc_bin)
     st.write("Predicted Value: ", prediction)
+    st.divider()
     if prediction > 0.3:
-        st.markdown("<h4 style='text-align: center; color: black;'>Report indicates presence of stones in your kidney</h4>", unsafe_allow_html=True)
-        st.markdown("<h5 style='text-align: center; color: black;'>Please do not panic and consider visiting a urologist/nephrologist for further consultation</h5>", unsafe_allow_html=True)
+        st.markdown("<h5 style='text-align: center; color: black;'><i>Report suggests presence of stones in your kidney</i></h5>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; color: black;'><i>Please do not panic. Consider visiting a urologist/nephrologist for further consultation.</i></p>", unsafe_allow_html=True)
+        st.divider()
     else:
-        st.markdown("<h4 style='text-align: center; color: black;'>Report doesn't account for presence of stones in your kidney</h4>", unsafe_allow_html=True)
-        st.markdown("<h5 style='text-align: center; color: black;'>Personal advise would be to visit a urologist/nephrologist for final confirmation</h5>", unsafe_allow_html=True)
+        st.markdown("<h5 style='text-align: center; color: black;'><i>Report doesn't account for presence of stones in your kidney</i></h5>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; color: black;'><i>Personal advise would be to visit a urologist/nephrologist for final confirmation</i></p>", unsafe_allow_html=True)
+        st.divider()
