@@ -83,5 +83,5 @@ if st.button("Predict"):
         st.divider()
     else:
         st.markdown("<h5 style='text-align: center; color: black;'><i>Report doesn't account for presence of stones in your kidney</i></h5>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center; color: black;'><i>Personal advise would be to visit a urologist/nephrologist for final confirmation</i></p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; color: black;'><i>Personal advise would be to visit a urologist/nephrologist for final confirmation.</i></p>", unsafe_allow_html=True)
         st.divider()
