@@ -3,7 +3,7 @@ import numpy as np, pandas as pd
 import pickle, base64
 
 # load the trained model
-model = pickle.load(open('model.py', 'rb'))
+model = pickle.load(open('trained_model.py', 'rb'))
 
 # define a function to make prediction
 def predict_target(gravity, ph, osmo, cond, urea, calc, osmo_cond_ratio, urea_calc_diff, osmo_urea_interaction, gravity_bin, ph_bin, osmo_bin, cond_bin, urea_bin, calc_bin):
@@ -11,6 +11,7 @@ def predict_target(gravity, ph, osmo, cond, urea, calc, osmo_cond_ratio, urea_ca
     # create a numpy array with the input values and reshape it for the model
     input_data = np.array([[gravity, ph, osmo, cond, urea, calc, osmo_cond_ratio, urea_calc_diff, osmo_urea_interaction, gravity_bin, ph_bin, osmo_bin, cond_bin, urea_bin, calc_bin]])
     input_data = np.reshape(input_data, (input_data.shape[0], input_data.shape[1], 1))
+    print (input_data.shape)
     
     # make prediction using the model
     prediction = model.predict(input_data)
@@ -53,8 +54,6 @@ add_bg_img('./Images/bg_cover.jpg')
 st.markdown("<h1 style='text-align: center; color: black;'>Kidney Stone Prediction</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: justify; color: black;'>The six physical characteristics of urine, <i>specific gravity</i> (the density of the urine relative to water), <i>pH value</i> (negative logarithm of the hydrogen ion), <i>osmolarity</i> (proportional to the concentration of molecules in solution), <i>conductivity</i> (proportional to the concentration of charged ions in solution), <i>urea</i> and <i>calcium  concentration</i> alongside few secondary characteristics have been provided below.</p>", unsafe_allow_html=True)
 st.markdown("<h5 style='text-align: center; color: black;'>Please drag the slider to enter the values and click on 'Predict' button</h5>", unsafe_allow_html=True)
-
-# st.markdown("Please drag the slider of these features to enter the corresponding value and finally click on **:blue[Predict]** button for displaying the result.")
 
 # add input fields for the features
 gravity = st.slider('specific gravity', min_value=float(data.gravity.min()), max_value=float(data.gravity.max()), value=float(data.gravity.mean()))
