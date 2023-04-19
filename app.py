@@ -47,7 +47,7 @@ def add_bg_img(image_file):
     """,
     unsafe_allow_html=True
         )
-add_bg_img('bg_cover.jpg')
+add_bg_img('./Images/bg_cover.jpg')
 
 # add a title and a header
 st.markdown("<h1 style='text-align: center; color: black;'>Kidney Stone Prediction</h1>", unsafe_allow_html=True)
