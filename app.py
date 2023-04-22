@@ -3,7 +3,7 @@ import numpy as np, pandas as pd
 import pickle, base64
 
 # load the trained model
-model = pickle.load(open('trained_model.py', 'rb'))
+model = pickle.load(open('trained_model.pkl', 'rb'))
 
 # define a function to make prediction
 def predict_target(gravity, ph, osmo, cond, urea, calc, osmo_cond_ratio, urea_calc_diff, osmo_urea_interaction, gravity_bin, ph_bin, osmo_bin, cond_bin, urea_bin, calc_bin):
@@ -47,7 +47,7 @@ def add_bg_img(image_file):
     """,
     unsafe_allow_html=True
         )
-add_bg_img('./Images/bg_cover.jpg')
+add_bg_img('./Images/pexels-8325982.jpg')
 
 # add a title and a header
 st.markdown("<h1 style='text-align: center; color: black;'>Kidney Stone Prediction</h1>", unsafe_allow_html=True)
