@@ -3,7 +3,7 @@ import numpy as np, pandas as pd
 import pickle, base64
 
 # load the trained model
-model = pickle.load(open('trained_model.pkl', 'rb'))
+model = pickle.load(open('./models/trained_model.pkl', 'rb'))
 
 # define a function to make prediction
 def predict_target(gravity, ph, osmo, cond, urea, calc, osmo_cond_ratio, urea_calc_diff, osmo_urea_interaction, gravity_bin, ph_bin, osmo_bin, cond_bin, urea_bin, calc_bin):
@@ -21,7 +21,7 @@ def predict_target(gravity, ph, osmo, cond, urea, calc, osmo_cond_ratio, urea_ca
     # since we need only the value we are using 'prediction[0][0]'
 
 # define a function to read and derive minimum/maximum values for features from the dataset
-data = pd.read_csv('kidney_stone_data.csv')
+data = pd.read_csv('./dataset/kidney_stone_data.csv')
 data['osmo_cond_ratio'] = data['osmo'] / data['cond']
 data['urea_calc_diff'] = data['urea'] - data['calc']
 data['osmo_urea_interaction'] = data['osmo'] * data['urea']
